@@ -39,7 +39,6 @@
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-2xl font-bold text-center text-orange-700 mb-8">Our Products</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Thekua -->
         <div class="bg-orange-50 p-6 rounded-xl shadow">
           <img src="thekua.jpg" alt="Thekua" class="w-full h-auto max-h-60 object-contain rounded-t-xl mb-4">
           <h3 class="text-xl font-semibold text-orange-800">Thekua (800gm)</h3>
@@ -47,7 +46,6 @@
           <p class="text-lg text-green-700 font-bold">Offer Price: ₹297 (15% OFF)</p>
           <a href="https://wa.me/919324410301?text=Hi! I want to order 800gm Thekua for ₹297 from Desi Cruncho." class="inline-block mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">Order on WhatsApp</a>
         </div>
-        <!-- Nimki -->
         <div class="bg-orange-50 p-6 rounded-xl shadow">
           <img src="nimki.jpg" alt="Nimki" class="w-full h-auto max-h-60 object-contain rounded-t-xl mb-4">
           <h3 class="text-xl font-semibold text-orange-800">Nimki (800gm)</h3>
@@ -96,7 +94,6 @@
       </form>
     </div>
 
-    <!-- Live Feedback Table -->
     <div class="max-w-4xl mx-auto mt-12 bg-white p-6 rounded-xl shadow">
       <h3 class="text-xl font-bold text-orange-700 mb-4 text-center">⭐ What Our Customers Are Saying</h3>
       <table id="feedback-table" class="w-full border border-gray-200 rounded-lg overflow-hidden text-left">
@@ -125,12 +122,13 @@
 
       async function submitFeedback(event) {
         event.preventDefault();
-        const rating = document.getElementById("rating").value;
-        const feedback = document.getElementById("message").value.trim();
-        const name = prompt("Please enter your name (optional):")?.trim() || "Anonymous";
 
-        if (rating === "0" || feedback === "") {
-          alert("⚠️ Please select a star rating and enter feedback.");
+        const name = prompt("Please enter your name:") || "Anonymous";
+        const rating = document.getElementById("rating").value;
+        const feedback = document.getElementById("message").value;
+
+        if (rating === "0") {
+          alert("Please select a star rating.");
           return;
         }
 
@@ -156,8 +154,8 @@
             alert("❌ Something went wrong while sending feedback. Please try again.");
           }
         } catch (error) {
-          console.error("Error:", error);
-          alert("🚫 Error submitting feedback. Please check your internet or try again later.");
+          alert("❌ Network error. Please try again.");
+          console.error(error);
         }
       }
 
@@ -181,8 +179,8 @@
             `;
             tbody.appendChild(row);
           });
-        } catch (err) {
-          console.error("Error loading feedback:", err);
+        } catch (error) {
+          console.error("Error loading feedback:", error);
         }
       }
 
