@@ -4,8 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Desi Cruncho - Homemade Snacks</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Desi Cruncho – Authentic homemade snacks like Thekua & Nimki delivered across Navi Mumbai. Pure taste, pure tradition. Order now!">
+  <meta name="keywords" content="Desi Cruncho, homemade snacks, Thekua, Nimki, Vashi snacks, Navi Mumbai snacks, traditional Indian snacks">
+  <meta name="author" content="Desi Cruncho Team">
+
+  <!-- Social Sharing Meta Tags (Open Graph for Facebook/WhatsApp) -->
+  <meta property="og:title" content="Desi Cruncho - Homemade Snacks with Traditional Taste">
+  <meta property="og:description" content="Order Thekua & Nimki online. Traditional taste, modern twist. Delivered in Navi Mumbai.">
+  <meta property="og:image" content="https://alok67807.github.io/DESI-CRUNCHO/logo.png">
+  <meta property="og:url" content="https://alok67807.github.io/DESI-CRUNCHO/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Desi Cruncho - Handmade Snacks">
+  <meta name="twitter:description" content="Thekua & Nimki direct from kitchen to your doorstep in Navi Mumbai.">
+  <meta name="twitter:image" content="https://alok67807.github.io/DESI-CRUNCHO/logo.png">
+
   <link rel="icon" href="logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-orange-50 text-gray-800">
 
@@ -77,7 +94,7 @@
       <h2 class="text-2xl font-bold text-orange-700 mb-4">Rate Us</h2>
       <p class="italic text-gray-600 mb-6">“Your feedback is the secret ingredient that makes Desi Cruncho more delicious.”</p>
       <div class="mb-8">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdfC5o37vGXiNiyDS4glnvzqc1awsT45XZM6cdMk8ZSxYLfiw/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <iframe onload="scrollToFeedback()" src="https://docs.google.com/forms/d/e/1FAIpQLSdfC5o37vGXiNiyDS4glnvzqc1awsT45XZM6cdMk8ZSxYLfiw/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
       </div>
 
       <!-- Live Feedback Table -->
@@ -92,7 +109,7 @@
             </tr>
           </thead>
           <tbody id="feedback-body" class="bg-white divide-y divide-gray-200 text-gray-700">
-            <!-- Feedback will be inserted here -->
+            <!-- Data will load here -->
           </tbody>
         </table>
       </div>
@@ -120,6 +137,13 @@
             `;
             tbody.appendChild(tr);
           });
+        }
+
+        function scrollToFeedback() {
+          const feedbackSection = document.getElementById("feedback");
+          if (feedbackSection) {
+            feedbackSection.scrollIntoView({ behavior: "smooth" });
+          }
         }
 
         loadGoogleFormFeedback();
