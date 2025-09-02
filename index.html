@@ -24,7 +24,6 @@
         <a href="#products" class="hover:text-orange-600">Products</a>
         <a href="#about" class="hover:text-orange-600">About Us</a>
         <a href="#feedback" class="hover:text-orange-600">Rate Us</a>
-        <a href="#qr" class="hover:text-orange-600">QR</a>
         <a href="#contact" class="hover:text-orange-600">Contact</a>
       </nav>
     </div>
@@ -117,41 +116,6 @@
           </tbody>
         </table>
       </div>
-
-      <script>
-        async function loadGoogleFormFeedback() {
-          const response = await fetch("https://docs.google.com/spreadsheets/d/12fJOMofbZw0kEh6PxysAGUZRf9M_yyRAFQzxdw8CLZ8/gviz/tq?tqx=out:json");
-          const text = await response.text();
-          const json = JSON.parse(text.substring(47).slice(0, -2));
-
-          const tbody = document.getElementById("feedback-body");
-          tbody.innerHTML = "";
-
-          json.table.rows.forEach(row => {
-            const name = row.c[1]?.v || "Anonymous";
-            const ratingValue = parseInt(row.c[2]?.v) || 0;
-            const rating = "⭐".repeat(ratingValue);
-            const feedback = row.c[3]?.v || "No message.";
-
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-              <td class="p-3">${name}</td>
-              <td class="p-3 text-yellow-500">${rating}</td>
-              <td class="p-3">${feedback}</td>
-            `;
-            tbody.appendChild(tr);
-          });
-        }
-
-        function scrollToFeedback() {
-          const feedbackSection = document.getElementById("feedback");
-          if (feedbackSection) {
-            feedbackSection.scrollIntoView({ behavior: "smooth" });
-          }
-        }
-
-        loadGoogleFormFeedback();
-      </script>
     </div>
   </section>
 
@@ -189,16 +153,32 @@
         message.innerText = "🎉 Coupon Applied Successfully!";
         message.classList.remove("text-red-500");
         message.classList.add("text-green-600");
-
-        alert("Coupon Applied Successfully! Prices updated.");
       } else {
         message.innerText = "❌ Invalid Coupon Code";
         message.classList.remove("text-green-600");
         message.classList.add("text-red-500");
-
-        alert("Invalid Coupon Code. Please try again.");
       }
     }
+  </script>
+
+  <!-- Tracking Script -->
+  <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzEt6U0Ep1QE2wGPSEsETDN48qdaZvNAnzTMPLzn1bnx7xwmcvmYSyWe5aSyMZxhNej/exec";
+
+    // Track Page Visit
+    fetch(`${WEB_APP_URL}?event=Page Visit&page=${encodeURIComponent(window.location.href)}&referrer=${encodeURIComponent(document.referrer)}&product=`)
+      .catch(err => console.log("Tracking failed", err));
+
+    // Track Order Button Clicks
+    document.getElementById("thekua-link").addEventListener("click", () => {
+      fetch(`${WEB_APP_URL}?event=Order Click&product=Thekua&page=${encodeURIComponent(window.location.href)}&referrer=${encodeURIComponent(document.referrer)}`)
+        .catch(err => console.log("Tracking failed", err));
+    });
+
+    document.getElementById("nimki-link").addEventListener("click", () => {
+      fetch(`${WEB_APP_URL}?event=Order Click&product=Nimki&page=${encodeURIComponent(window.location.href)}&referrer=${encodeURIComponent(document.referrer)}`)
+        .catch(err => console.log("Tracking failed", err));
+    });
   </script>
 
 </body>
