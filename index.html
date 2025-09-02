@@ -9,6 +9,33 @@
   <meta name="author" content="Desi Cruncho Team">
   <link rel="icon" href="logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tracking Script -->
+  <script>
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyBw6xLZrAVMCaY22_d8gZXi-ypJdHSV0sOclbqAIofW387U5bbn8Q50cqVBjJ0oTUS/exec";
+
+  function trackEvent(eventType, product="") {
+    const pageURL = window.location.href;
+    const referrer = document.referrer;
+
+    fetch(`${WEB_APP_URL}?event=${encodeURIComponent(eventType)}&product=${encodeURIComponent(product)}&page=${encodeURIComponent(pageURL)}&referrer=${encodeURIComponent(referrer)}`)
+      .then(res => console.log("Tracking sent:", eventType, product))
+      .catch(err => console.error("Tracking failed", err));
+  }
+
+  // Track page visit
+  window.addEventListener("load", () => {
+    trackEvent("Page Visit");
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const thekuaBtn = document.getElementById("thekua-link");
+    const nimkiBtn = document.getElementById("nimki-link");
+
+    if(thekuaBtn) thekuaBtn.addEventListener("click", () => trackEvent("Order Click", "Thekua"));
+    if(nimkiBtn) nimkiBtn.addEventListener("click", () => trackEvent("Order Click", "Nimki"));
+  });
+  </script>
 </head>
 <body class="bg-orange-50 text-gray-800">
 
