@@ -140,7 +140,8 @@
 
     async function logEvent(eventType, product="") {
       try {
-        const response = await fetch(SCRIPT_URL, {
+        const ref = document.referrer ? document.referrer : "Direct / Unknown";
+        await fetch(SCRIPT_URL, {
           method: "POST",
           mode: "no-cors", // prevent CORS blocking
           headers: {"Content-Type": "application/json"},
@@ -148,10 +149,10 @@
             eventType: eventType,
             product: product,
             pageUrl: window.location.href,
-            referrer: document.referrer
+            referrer: ref
           })
         });
-        console.log("✅ Event sent:", eventType, product);
+        console.log("✅ Event sent:", eventType, product, "Ref:", ref);
       } catch (err) {
         console.error("❌ Tracking failed", err);
       }
