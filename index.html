@@ -136,22 +136,25 @@
 
   <!-- Scripts -->
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxXQy2Ys9ZXBZnqZ3Xq_I6ptRdMn-93524aTA3555ugFqa0z-S899RgaTw2vc_Y_we7Ew/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3Hgs_1cgdlgj5_XEkn4N1X6S-Vwc4DpaZHThO10EuQ-pFQnU5pNGSD30s05SCdxj8/exec";
 
-    function logEvent(eventType, product="") {
-      fetch(SCRIPT_URL, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-          eventType: eventType,
-          product: product,
-          pageUrl: window.location.href,
-          referrer: document.referrer
-        })
-      })
-      .then(res => res.json())
-      .then(data => console.log("✅ Logged:", data))
-      .catch(err => console.error("❌ Tracking failed", err));
+    async function logEvent(eventType, product="") {
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors", // prevent CORS blocking
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({
+            eventType: eventType,
+            product: product,
+            pageUrl: window.location.href,
+            referrer: document.referrer
+          })
+        });
+        console.log("✅ Event sent:", eventType, product);
+      } catch (err) {
+        console.error("❌ Tracking failed", err);
+      }
     }
 
     window.addEventListener("load", () => logEvent("Page Load"));
