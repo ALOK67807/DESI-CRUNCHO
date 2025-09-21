@@ -1,211 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Desi Cruncho - Homemade Snacks</title>
-  <meta name="description" content="Desi Cruncho – Authentic homemade snacks like Thekua & Nimki delivered across Navi Mumbai. Pure taste, pure tradition. Order now!">
-  <meta name="keywords" content="Desi Cruncho, homemade snacks, Thekua, Nimki, Vashi snacks, Navi Mumbai snacks, traditional Indian snacks">
-  <meta name="author" content="Desi Cruncho Team">
-  <link rel="icon" href="logo.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desi Cruncho</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  #heroSlider { position: relative; width: 100%; height: 400px; overflow: hidden; margin-top: 80px; }
+  .hero-slide { width: 100%; height: 100%; position: absolute; top:0; left:0; }
+  .hero-slide.hidden { display: none; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; cursor: pointer; transition: all 0.3s; }
+</style>
 </head>
-<body class="bg-orange-50 text-gray-800">
+<body class="bg-white text-gray-800">
 
-  <!-- Header -->
-  <header class="bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center space-x-4">
-        <img src="logo.png" alt="Desi Cruncho Logo" class="h-10 w-10 rounded-full"/>
-        <h1 class="text-2xl font-bold text-orange-600">Desi Cruncho</h1>
+<!-- Header -->
+<header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+    <div class="flex items-center space-x-3">
+      <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+        <img src="https://i.ibb.co/KjXFB887/logo-png.png" alt="Logo" class="w-12 h-12 rounded-full">
       </div>
-      <nav class="space-x-6 font-semibold text-gray-700">
-        <a href="#home" class="hover:text-orange-600">Home</a>
-        <a href="#products" class="hover:text-orange-600">Products</a>
-        <a href="#about" class="hover:text-orange-600">About Us</a>
-        <a href="#feedback" class="hover:text-orange-600">Rate Us</a>
-        <a href="#contact" class="hover:text-orange-600">Contact</a>
-      </nav>
+      <span class="text-2xl font-bold text-orange-500">Desi Cruncho</span>
     </div>
-  </header>
+    <nav class="space-x-6 font-medium">
+      <a href="#heroSlider" class="hover:text-orange-500">Home</a>
+      <a href="#products" class="hover:text-orange-500">Products</a>
+      <a href="#ourstory" class="hover:text-orange-500">Our Story</a>
+      <a href="#reviews" class="hover:text-orange-500">Reviews</a>
+      <a href="contact.html" class="hover:text-orange-500">Contact Us</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- Hero -->
-  <section id="home">
-    <div class="bg-cover bg-center py-32 text-center text-white" style="background-image: url('hero-bg.jpg');">
-      <h2 class="text-4xl font-bold drop-shadow-md">Welcome to Desi Cruncho</h2>
-      <p class="mt-4 text-xl font-medium drop-shadow-md">Enjoy the taste of tradition with our handmade snacks!</p>
-    </div>
-  </section>
+<!-- Hero Slider -->
+<section id="heroSlider">
+  <!-- Slide 1 Video -->
+  <div class="hero-slide">
+    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+      <source src="https://github.com/snackszone/desicruncho/raw/refs/heads/main/hero-video-1.mp4" type="video/mp4">
+    </video>
+  </div>
+  <!-- Slide 2 Video -->
+  <div class="hero-slide hidden">
+    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+      <source src="https://github.com/snackszone/desicruncho/raw/refs/heads/main/hero-video-2.mp4" type="video/mp4">
+    </video>
+  </div>
+  <!-- Slide 3 Image -->
+  <div class="hero-slide hidden">
+    <img src="https://i.ibb.co/XxcdQHqn/cropped-Gemini-Generated-Image-29gvb329gvb329gv.png" alt="Slide 3" class="w-full h-full object-cover">
+  </div>
+  <!-- Slide 4 Image -->
+  <div class="hero-slide hidden">
+    <img src="https://i.ibb.co/q3DpTnjZ/Whats-App-Image-2025-09-20-at-10-40-11-PM-1.jpg" alt="Slide 4" class="w-full h-full object-cover">
+  </div>
 
-  <!-- Products with Coupon -->
-  <section id="products" class="py-12 bg-white">
-    <div class="max-w-6xl mx-auto px-4">
+  <!-- Arrows -->
+  <button id="prevSlide" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full">❮</button>
+  <button id="nextSlide" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full">❯</button>
 
-      <!-- Coupon Feature -->
-      <div id="coupon-section" class="text-center mb-8 p-4 bg-yellow-100 rounded-xl shadow-md">
-        <h3 class="text-xl font-bold mb-2">Festive Season Offer 🎉</h3>
-        <p class="mb-2">Get 15% OFF on Thekua & Nimki! Use Coupon Code:</p>
-        <input 
-          type="text" 
-          id="coupon-code" 
-          placeholder="Enter Coupon Code" 
-          class="p-2 border rounded-lg w-2/3"
-        >
-        <button 
-          onclick="applyCoupon()" 
-          class="bg-green-500 text-white px-4 py-2 rounded-lg ml-2 hover:bg-green-600 transition">
-          Apply
-        </button>
-        <p id="coupon-message" class="mt-2 text-sm"></p>
+  <!-- Dots -->
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+    <span class="dot bg-gray-300" data-index="0"></span>
+    <span class="dot bg-gray-300" data-index="1"></span>
+    <span class="dot bg-gray-300" data-index="2"></span>
+    <span class="dot bg-gray-300" data-index="3"></span>
+  </div>
+</section>
+
+<!-- Products -->
+<section id="products" class="py-16 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-orange-500 mb-12">Our Products</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Thekua -->
+      <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+        <img src="https://i.ibb.co/BHy3ZBKS/thekua.jpg" alt="Thekua" class="mx-auto mb-4 rounded-lg object-cover w-full h-56">
+        <h3 class="text-xl font-semibold">Thekua</h3>
+        <p>Weight: 800g</p>
+        <p>Price: ₹280</p>
+        <a href="cart.html?name=Thekua&price=280&weight=800g&image=https://i.ibb.co/BHy3ZBKS/thekua.jpg">
+          <button class="mt-3 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Add to Cart</button>
+        </a>
       </div>
 
-      <h2 class="text-2xl font-bold text-center text-orange-700 mb-8">Our Products</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Thekua -->
-        <div class="bg-orange-50 p-6 rounded-xl shadow">
-          <img src="thekua.jpg" alt="Thekua" class="w-full h-auto max-h-60 object-contain rounded-t-xl mb-4">
-          <h3 class="text-xl font-semibold text-orange-800">Thekua (800gm)</h3>
-          <p id="thekua-price" class="text-lg text-green-700 font-bold">Price: ₹280</p>
-          <a id="thekua-link" href="#" class="order-button inline-block mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg" data-product="Thekua">Order on WhatsApp</a>
+      <!-- Nimki -->
+      <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+        <img src="https://i.ibb.co/tPvCDjqJ/nimki.jpg" alt="Nimki" class="mx-auto mb-4 rounded-lg object-contain w-full h-56 bg-white">
+        <h3 class="text-xl font-semibold">Nimki</h3>
+        <p>Weight: 800g</p>
+        <p>Price: ₹300</p>
+        <a href="cart.html?name=Nimki&price=300&weight=800g&image=https://i.ibb.co/tPvCDjqJ/nimki.jpg">
+          <button class="mt-3 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Add to Cart</button>
+        </a>
+      </div>
+
+      <!-- Combo Pack -->
+      <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+        <img src="https://i.ibb.co/fVJFtnVB/Whats-App-Image-2025-09-20-at-11-05-53-PM.jpg" alt="Combo Pack" class="mx-auto mb-4 rounded-lg object-cover w-full h-56">
+        <h3 class="text-xl font-semibold">Combo Pack</h3>
+        <p>Weight: 800+800g</p>
+        <p>Price: ₹580</p>
+        <a href="cart.html?name=Combo%20Pack&price=580&weight=800+800g&image=https://i.ibb.co/fVJFtnVB/Whats-App-Image-2025-09-20-at-11-05-53-PM.jpg">
+          <button class="mt-3 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Add to Cart</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Story -->
+<section id="ourstory" class="py-16">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
+    <img src="https://i.ibb.co/GfntzfgK/Gemini-Generated-Image-20zv3620zv3620zv.png" alt="Our Story" class="rounded-lg shadow-md object-contain w-full h-80">
+    <div>
+      <h2 class="text-3xl font-bold text-orange-500 mb-4">Our Story</h2>
+      <p class="font-medium">Desi Cruncho was born with a mission to bring authentic Indian snacks to your plate. Every bite tells a story of tradition and love for homemade flavors.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews" class="py-16 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-orange-500 mb-12">Customer Reviews</h2>
+    <div class="grid md:grid-cols-3 gap-6 mb-10" id="reviewsGrid">
+      <div class="bg-white p-6 rounded-lg shadow text-center">
+        <p class="text-orange-500 text-xl mb-2">⭐⭐⭐⭐⭐</p>
+        <p class="font-bold">Rahul</p>
+        <p>“Amazing taste and packaging. Totally loved it!”</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow text-center">
+        <p class="text-orange-500 text-xl mb-2">⭐⭐⭐⭐⭐</p>
+        <p class="font-bold">Priya</p>
+        <p>“Crispy and fresh. Reminds me of home snacks.”</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow text-center">
+        <p class="text-orange-500 text-xl mb-2">⭐⭐⭐⭐⭐</p>
+        <p class="font-bold">Amit</p>
+        <p>“Perfect for evening tea time. Highly recommended.”</p>
+      </div>
+    </div>
+
+    <!-- Review Form -->
+    <div class="relative max-w-2xl mx-auto">
+      <form id="reviewForm" class="bg-white p-6 rounded-lg shadow">
+        <h3 class="text-xl font-semibold mb-4 text-center">Write a Review</h3>
+        <div class="flex items-center justify-center space-x-2 mb-4" id="starContainer">
+          <span class="cursor-pointer text-2xl" data-star="1">☆</span>
+          <span class="cursor-pointer text-2xl" data-star="2">☆</span>
+          <span class="cursor-pointer text-2xl" data-star="3">☆</span>
+          <span class="cursor-pointer text-2xl" data-star="4">☆</span>
+          <span class="cursor-pointer text-2xl" data-star="5">☆</span>
         </div>
-        <!-- Nimki -->
-        <div class="bg-orange-50 p-6 rounded-xl shadow">
-          <img src="nimki.jpg" alt="Nimki" class="w-full h-auto max-h-60 object-contain rounded-t-xl mb-4">
-          <h3 class="text-xl font-semibold text-orange-800">Nimki (800gm)</h3>
-          <p id="nimki-price" class="text-lg text-green-700 font-bold">Price: ₹300</p>
-          <a id="nimki-link" href="#" class="order-button inline-block mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg" data-product="Nimki">Order on WhatsApp</a>
-        </div>
+        <input id="reviewName" type="text" class="w-full border rounded-lg p-2 mb-4" placeholder="Your Name" required>
+        <textarea id="reviewText" class="w-full border rounded-lg p-2 mb-4" placeholder="Write your review here..." required></textarea>
+        <button type="submit" class="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 block mx-auto">Submit Review</button>
+      </form>
+
+      <div id="thankYou" class="hidden absolute inset-0 bg-white bg-opacity-95 flex flex-col justify-center items-center rounded-lg shadow">
+        <button id="closeThankYou" class="absolute top-2 right-2 text-gray-600 hover:text-red-500 text-xl font-bold">✖</button>
+        <h3 class="text-xl font-bold text-orange-500 mb-2">Thank You!</h3>
+        <p>Your review has been submitted.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- About -->
-  <section id="about" class="bg-orange-100 py-12 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-2xl font-bold text-orange-700 mb-4">Our Story</h2>
-      <p class="text-lg text-gray-700">
-        At <strong>Desi Cruncho</strong>, we believe in the magic of tradition. Born from the love of authentic homemade snacks,
-        our journey started in a small kitchen in Vashi, Navi Mumbai. Every Thekua and Nimki we make carries the essence of
-        warmth, simplicity, and grandma's recipes. Your trust is our biggest ingredient, and your satisfaction is our reward.
-      </p>
+<!-- Instagram -->
+<section class="py-16 bg-gray-200 text-center">
+  <h2 class="text-2xl font-bold mb-4">See our journey tuned with us</h2>
+  <p class="mb-6">Be a part of Desi Cruncho — A Desi Brand</p>
+  <a href="https://www.instagram.com/desi.cruncho" target="_blank" class="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Follow us on Instagram</a>
+</section>
+
+<!-- Footer -->
+<footer class="bg-orange-500 text-white py-10 px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div>
+      <h2 class="text-2xl font-bold">Desi Cruncho</h2>
+      <p class="mt-2">A Taste of Tradition in Every Bite</p>
     </div>
-  </section>
-
-  <!-- Feedback -->
-  <section id="feedback" class="bg-white py-12 px-4">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-2xl font-bold text-orange-700 mb-4">Rate Us</h2>
-      <p class="italic text-gray-600 mb-6">“Your feedback is the secret ingredient that makes Desi Cruncho more delicious.”</p>
-      <div class="mb-8">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdfC5o37vGXiNiyDS4glnvzqc1awsT45XZM6cdMk8ZSxYLfiw/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-      </div>
-
-      <!-- Live Feedback Table -->
-      <div class="max-w-4xl mx-auto mt-12 bg-white p-6 rounded-xl shadow">
-        <h3 class="text-xl font-bold text-orange-700 mb-4 text-center">⭐ What Our Customers Are Saying</h3>
-        <table id="feedback-table" class="w-full border border-gray-200 rounded-lg overflow-hidden text-left">
-          <thead class="bg-orange-100 text-orange-800">
-            <tr>
-              <th class="p-3">Name</th>
-              <th class="p-3">Rating</th>
-              <th class="p-3">Feedback</th>
-            </tr>
-          </thead>
-          <tbody id="feedback-body" class="bg-white divide-y divide-gray-200 text-gray-700">
-            <!-- Data will load here -->
-          </tbody>
-        </table>
-      </div>
+    <div>
+      <h3 class="text-lg font-semibold">Company</h3>
+      <ul class="mt-2 space-y-2">
+        <li><a href="#ourstory" class="hover:underline">Our Story</a></li>
+        <li><a href="contact.html" class="hover:underline">Contact Us</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="bg-white py-12 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-2xl font-bold text-orange-700 mb-4">Contact Us</h2>
-      <p class="text-lg mb-2">📞 <strong>Phone:</strong> <a href="tel:9324410301" class="text-blue-600 hover:underline">9324410301</a></p>
-      <p class="text-lg mb-2">📧 <strong>Email:</strong> <a href="mailto:desicruncho@gmail.com" class="text-blue-600 hover:underline">desicruncho@gmail.com</a></p>
-      <p class="text-lg">📍 <strong>Address:</strong> Vashi, Navi Mumbai – 400703</p>
+    <div>
+      <h3 class="text-lg font-semibold">Quick Links</h3>
+      <ul class="mt-2 space-y-2">
+        <li><a href="#products" class="hover:underline">Products</a></li>
+        <li><a href="#reviews" class="hover:underline">Reviews</a></li>
+      </ul>
     </div>
-  </section>
+    <div>
+      <h3 class="text-lg font-semibold">Get in touch</h3>
+      <p class="mt-2 font-bold">Vashi, Navi Mumbai 400703</p>
+      <p class="font-bold">📞 +91 9324410301</p>
+      <p class="font-bold">📧 desicruncho@gmail.com</p>
+    </div>
+  </div>
+  <div class="text-center mt-8 text-sm">
+    © 2025 Desi Cruncho. All rights reserved.
+  </div>
+</footer>
 
-  <!-- Footer -->
-  <footer class="bg-orange-600 text-white text-center py-4 mt-8">
-    &copy; 2025 Desi Cruncho. All rights reserved.
-  </footer>
+<!-- Scripts -->
+<script>
+/* Hero Slider */
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.dot');
+let currentSlide = 0;
+function showSlide(index){
+  slides.forEach(s=>s.classList.add('hidden'));
+  slides[index].classList.remove('hidden');
+  dots.forEach(d=>d.classList.remove('bg-orange-500'));
+  dots[index].classList.add('bg-orange-500');
+}
+function nextSlide(){
+  currentSlide=(currentSlide+1)%slides.length;
+  showSlide(currentSlide);
+}
+function prevSlide(){
+  currentSlide=(currentSlide-1+slides.length)%slides.length;
+  showSlide(currentSlide);
+}
+document.getElementById('nextSlide').addEventListener('click', nextSlide);
+document.getElementById('prevSlide').addEventListener('click', prevSlide);
+dots.forEach(dot=>dot.addEventListener('click', ()=>{ currentSlide=parseInt(dot.dataset.index); showSlide(currentSlide); }));
+showSlide(currentSlide);
 
-  <!-- Scripts -->
-  <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3Hgs_1cgdlgj5_XEkn4N1X6S-Vwc4DpaZHThO10EuQ-pFQnU5pNGSD30s05SCdxj8/exec";
+/* Optional: Auto-slide every 4 sec */
+setInterval(nextSlide, 4000);
 
-    async function logEvent(eventType, product="") {
-      try {
-        const ref = document.referrer ? document.referrer : "Direct / Unknown";
-        await fetch(SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors", // prevent CORS blocking
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify({
-            eventType: eventType,
-            product: product,
-            pageUrl: window.location.href,
-            referrer: ref
-          })
-        });
-        console.log("✅ Event sent:", eventType, product, "Ref:", ref);
-      } catch (err) {
-        console.error("❌ Tracking failed", err);
-      }
-    }
+/* Review Form Fast Submit */
+const stars = document.querySelectorAll('#starContainer span');
+let selectedRating = 0;
+stars.forEach(star => {
+  star.addEventListener('click', ()=>{
+    selectedRating = star.dataset.star;
+    stars.forEach(s=>s.textContent="☆");
+    for(let i=0;i<selectedRating;i++){stars[i].textContent="⭐";}
+  });
+});
 
-    window.addEventListener("load", () => logEvent("Page Load"));
+const reviewForm=document.getElementById('reviewForm');
+const thankYou=document.getElementById('thankYou');
+const closeThankYou=document.getElementById('closeThankYou');
+const reviewsGrid=document.getElementById('reviewsGrid');
 
-    document.querySelectorAll(".order-button").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const product = btn.getAttribute("data-product");
-        const price = product === "Thekua" ? 280 : 300;
-        btn.href = `https://wa.me/919324410301?text=Hi! I want to order 800gm ${product} for ₹${price} from Desi Cruncho.`;
-        logEvent("Product Click", product);
-      });
-    });
+reviewForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const name=document.getElementById('reviewName').value.trim();
+  const reviewText=document.getElementById('reviewText').value.trim();
+  if(selectedRating==0){alert("Please select a star rating!");return;}
+  if(reviewText==""){alert("Please write your review!");return;}
 
-    function applyCoupon() {
-      const code = document.getElementById("coupon-code").value.trim();
-      const message = document.getElementById("coupon-message");
-      if(code.toLowerCase() === "ganpatibappa784") {
-        document.getElementById("thekua-price").innerText = `Price: ₹238`;
-        document.getElementById("nimki-price").innerText = `Price: ₹255`;
-        message.innerText = "🎉 Coupon Applied Successfully!";
-        message.classList.remove("text-red-500");
-        message.classList.add("text-green-600");
-        alert("Coupon Applied Successfully! Prices updated.");
-      } else {
-        message.innerText = "❌ Invalid Coupon Code";
-        message.classList.remove("text-green-600");
-        message.classList.add("text-red-500");
-        alert("Invalid Coupon Code. Please try again.");
-      }
-    }
+  // Fast append review
+  const reviewCard=document.createElement('div');
+  reviewCard.className="bg-white p-6 rounded-lg shadow text-center";
+  reviewCard.innerHTML=`<p class="text-orange-500 text-xl mb-2">${'⭐'.repeat(selectedRating)}</p><p class="font-bold">${name}</p><p>${reviewText}</p>`;
+  reviewsGrid.appendChild(reviewCard);
 
-    async function loadGoogleFormFeedback() {
-      const response = await fetch("https://docs.google.com/spreadsheets/d/12fJOMofbZw0kEh6PxysAGUZRf9M_yyRAFQzxdw8CLZ8/gviz/tq?tqx=out:json");
-      const text = await response.text();
-      const json = JSON.parse(text.substring(47).slice(0, -2));
-      const tbody = document.getElementById("feedback-body");
-      tbody.innerHTML = "";
-      json.table.rows.forEach(row => {
-        const name = row.c[1]?.v || "Anonymous";
-        const ratingValue = parseInt(row.c[2]?.v) || 0;
-        const rating = "⭐".repeat(ratingValue);
-        const feedback = row.c[3]?.v || "No message.";
-        const tr = document.createElement("tr");
-        tr.innerHTML = `<td class="p-3">${name}</td><td class="p-3 text-yellow-500">${rating}</td><td class="p-3">${feedback}</td>`;
-        tbody.appendChild(tr);
-      });
-    }
+  thankYou.classList.remove('hidden');
+  reviewForm.reset();
+  stars.forEach(s=>s.textContent="☆");
+  const ratingToSend = selectedRating;
+  selectedRating=0;
 
-    loadGoogleFormFeedback();
-  </script>
+  // Send to Google Sheets asynchronously
+  fetch("https://script.google.com/macros/s/AKfycbzupwBG9lrM-rMEKUFD5huRM-zWWfG6zzXLCzlKF75HRIuRSkaY-62y7Cal0mB-rkE/exec", {
+    method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body: new URLSearchParams({ name, rating: ratingToSend, review: reviewText })
+  }).catch(err=>console.error("Error saving review:", err));
+});
 
+closeThankYou.addEventListener('click', ()=>{ thankYou.classList.add('hidden'); });
+</script>
 </body>
 </html>
